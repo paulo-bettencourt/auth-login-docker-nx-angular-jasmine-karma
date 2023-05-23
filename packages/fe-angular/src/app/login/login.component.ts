@@ -23,8 +23,6 @@ export class LoginComponent {
         console.log('data: ', data);
       },
       error: (err) => {
-        alert('hi');
-
         console.log(err);
       },
     });
