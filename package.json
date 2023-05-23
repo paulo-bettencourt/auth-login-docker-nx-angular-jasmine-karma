@@ -2,7 +2,9 @@
   "name": "auth-login-docker-nx-angular-jasmine-karma",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "nx serve be-express & nx serve fe-angular"
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "~16.0.0",
@@ -54,10 +56,14 @@
     "@angular/compiler": "~16.0.0",
     "@angular/core": "~16.0.0",
     "@angular/forms": "~16.0.0",
+    "@angular/localize": "^16.0.2",
     "@angular/platform-browser": "~16.0.0",
     "@angular/platform-browser-dynamic": "~16.0.0",
     "@angular/router": "~16.0.0",
+    "@ng-bootstrap/ng-bootstrap": "^14.1.1",
+    "@popperjs/core": "^2.11.7",
     "axios": "^1.0.0",
+    "bootstrap": "^5.2.3",
     "express": "^4.18.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

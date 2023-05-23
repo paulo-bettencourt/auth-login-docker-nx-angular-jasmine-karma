@@ -15,13 +15,13 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome fe-angular'
+      'Welcome auth-login-angular-jasmine-karma'
     );
   });
 
-  it(`should have as title 'fe-angular'`, () => {
+  it(`should have as title 'auth-login-angular-jasmine-karma'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('fe-angular');
+    expect(app.title).toEqual('auth-login-angular-jasmine-karma');
   });
 });

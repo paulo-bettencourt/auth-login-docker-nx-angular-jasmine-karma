@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-nx-welcome',
+  selector: 'auth-login-angular-jasmine-karma-nx-welcome',
   standalone: true,
   imports: [CommonModule],
   template: `
@@ -423,7 +423,7 @@ import { CommonModule } from '@angular/common';
         <div id="welcome">
           <h1>
             <span> Hello there, </span>
-            Welcome fe-angular 👋
+            Welcome auth-login-angular-jasmine-karma 👋
           </h1>
         </div>
         <!--  HERO  -->

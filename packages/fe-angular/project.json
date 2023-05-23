@@ -19,7 +19,7 @@
           "packages/fe-angular/src/favicon.ico",
           "packages/fe-angular/src/assets"
         ],
-        "styles": ["packages/fe-angular/src/styles.scss"],
+        "styles": ["packages/fe-angular/src/styles.scss", "node_modules/bootstrap/dist/css/bootstrap.min.css"],
         "scripts": []
       },
       "configurations": {
