@@ -1,0 +1,15 @@
+{
+  "name": "auth-login-docker-nx-angular-jasmine-karma",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "nx": "16.2.1",
+    "nx-cloud": "latest"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
