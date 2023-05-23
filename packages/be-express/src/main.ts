@@ -14,11 +14,12 @@ const port = process.env.PORT || 3333;
 
 // MONGOOSE
 
-const kittySchema = new mongoose.Schema({
+const yourSchema = new mongoose.Schema({
   name: String,
 });
 
-const Kitten = mongoose.model('Kitten', kittySchema);
+const YourModel = mongoose.model('login-collection', yourSchema);
+const instance = new YourModel({ name: 'Silence' });
 
 main().then((data) => console.log('connected ', data));
 
@@ -26,6 +27,7 @@ async function main() {
   console.log('KEY API ', process.env);
   await mongoose.connect(process.env.MONGOOSE_URI);
   // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
+  instance.save();
 }
 
 ////////////////////////////////
