@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve be-express & nx serve fe-angular"
+    "start": "nx serve be-express & nx serve fe-angular",
+    "fe-angular:dev:docker": "nx serve fe-angular --host=0.0.0.0",
+    "be-express:dev:docker": "nx serve be-express --host=0.0.0.0"
   },
   "private": true,
   "devDependencies": {
