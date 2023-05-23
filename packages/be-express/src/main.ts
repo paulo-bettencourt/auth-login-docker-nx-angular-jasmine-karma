@@ -8,13 +8,13 @@ import * as path from 'path';
 import cors from 'cors';
 
 const app = express();
+import api from './modules/api.js';
+
 app.use(cors());
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
-app.post('/api/login', (req, res) => {
-  res.send({ message: 'Welcome to be-express!' });
-});
+app.post('/api/login', api.loginHandler);
 
 app.get('/api/', (req, res) => {
   res.send({ message: 'Welcome to be-express!' });
