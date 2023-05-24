@@ -1,15 +1,57 @@
-function loginHandler(req, res) {
-  res.send({
-    id: 15,
-    username: 'kminchelle',
-    email: 'kminchelle@qq.com',
-    firstName: 'Jeanne',
-    lastName: 'Halvorson',
-    gender: 'female',
-    image: 'https://robohash.org/autquiaut.png?size=50x50&set=set1',
-    token:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoia21pbmNoZWxsZSIsImVtYWlsIjoia21pbmNoZWxsZUBxcS5jb20iLCJmaXJzdE5hbWUiOiJKZWFubmUiLCJsYXN0TmFtZSI6IkhhbHZvcnNvbiIsImdlbmRlciI6ImZlbWFsZSIsImltYWdlIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvYXV0cXVpYXV0LnBuZz9zaXplPTUweDUwJnNldD1zZXQxIiwiaWF0IjoxNjM1NzczOTYyLCJleHAiOjE2MzU3Nzc1NjJ9.n9PQX8w8ocKo0dMCw3g8bKhjB8Wo7f7IONFBDqfxKhs',
+import mongoose from 'mongoose';
+var jwt = require('jsonwebtoken');
+var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
+
+const loginSchema = new mongoose.Schema({
+  username: 'string',
+  password: 'string',
+  token: 'string',
+});
+
+const LoginModel = mongoose.model('login-collection', loginSchema);
+
+async function loginHandler(req, res) {
+  console.log('REQUEST ', req);
+
+  const username = req.body.username;
+  const password = req.body.password;
+
+  const loginData = await LoginModel.find({
+    username: username,
+    password: password,
   });
+
+  console.log('user data: ', loginData);
+
+  res.send({ loginData });
 }
 
-module.exports = { loginHandler };
+function getTokenHandler(req, res) {
+  res.send({ token: token });
+}
+
+function registerLoginHandler(req, res) {
+  const instanceLogin = new LoginModel({
+    username: 'kminchelle',
+    password: '1111',
+  });
+
+  instanceLogin
+    .save()
+    .then(res.send({ message: 'user has been added' }))
+    .catch(console.log('Error'));
+}
+
+async function getLoginHandler(req, res) {
+  const id = req.params.id;
+  const loginModelQueryResponse = await LoginModel.findById(id);
+
+  res.send(loginModelQueryResponse);
+}
+
+module.exports = {
+  loginHandler,
+  registerLoginHandler,
+  getLoginHandler,
+  getTokenHandler,
+};

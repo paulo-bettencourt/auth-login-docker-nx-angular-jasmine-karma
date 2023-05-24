@@ -13,8 +13,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   providers: [ApiService],
 })
 export class LoginComponent {
-  // apiService = Inject(ApiService);
-
   constructor(private apiService: ApiService) {}
 
   login() {

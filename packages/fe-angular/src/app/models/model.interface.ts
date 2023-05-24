@@ -1,10 +1,6 @@
 export interface LoginData {
   id: number;
   username: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  gender: string;
-  image: string;
+  password: string;
   token: string;
 }

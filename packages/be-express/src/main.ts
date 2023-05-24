@@ -1,42 +1,45 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
+import mongoose from 'mongoose';
 import * as path from 'path';
 import cors from 'cors';
-import mongoose from 'mongoose';
 import api from './modules/api.js';
+import bodyParser from 'body-parser';
+
 const app = express();
+
+// create application/json parser
+const jsonParser = bodyParser.json();
+
 const port = process.env.PORT || 3333;
+
+// MONGOOSE CONNECTION TO DB
+async function main() {
+  await mongoose.connect(process.env.MONGOOSE_URI);
+}
+
+main()
+  .then(() => console.log('connected'))
+  .catch(() => console.log('error'));
 
 // ENV FILES
 //console.log('ENV FILE: ', dotenv.config()); // remove this after you've confirmed it is working
 //console.log('ENV FILE: ', process.env); // remove this after you've confirmed it is working
 
-// MONGOOSE
-
-const yourSchema = new mongoose.Schema({
-  name: String,
-});
-
-const YourModel = mongoose.model('login-collection', yourSchema);
-const instance = new YourModel({ name: 'Silence' });
-
-main().then((data) => console.log('connected ', data));
-
-async function main() {
-  console.log('KEY API ', process.env);
-  await mongoose.connect(process.env.MONGOOSE_URI);
-  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
-  instance.save();
-}
-
 ////////////////////////////////
 
+// APIS AND MICROSERVICES
 app.use(cors());
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
-app.post('/api/login', api.loginHandler);
+app.get('/api/register-login', api.registerLoginHandler);
+app.get('/api/get-login/:id', api.getLoginHandler);
+
+app.post('/api/login/', jsonParser, api.loginHandler);
+
+app.get('/api/token', api.getTokenHandler);
 
 app.get('/api/', (req, res) => {
   res.send({ message: 'Welcome to be-express!' });
