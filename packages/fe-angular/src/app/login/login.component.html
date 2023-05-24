@@ -15,7 +15,7 @@
   <h4>Auth Login</h4>
 </div>
 <div class="container">
-  <form>
+  <form [formGroup]="loginForm">
     <div class="mb-3">
       <label
         for="exampleInputEmail1"
@@ -26,6 +26,7 @@
         class="form-control"
         id="exampleInputEmail1"
         aria-describedby="emailHelp"
+        formControlName="username"
       >
       <div
         id="emailHelp"
@@ -41,6 +42,7 @@
         type="password"
         class="form-control"
         id="exampleInputPassword1"
+        formControlName="password"
       >
     </div>
     <a

@@ -9,11 +9,9 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  login() {
-    return this.http.post<LoginData>(this.apiUrl, {
-      username: 'kminchelle',
-      password: '0lelplR',
-    });
+  login(login: Partial<{ username: string | null; password: string | null }>) {
+    console.log('kasldjflkasdjf ', login);
+    return this.http.post<LoginData>(this.apiUrl, login);
     //  return this.http.get('http://localhost:3333/api');
   }
 }

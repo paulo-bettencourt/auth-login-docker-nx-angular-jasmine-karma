@@ -11,6 +11,8 @@ const loginSchema = new mongoose.Schema({
 const LoginModel = mongoose.model('login-collection', loginSchema);
 
 async function loginHandler(req, res) {
+  console.log('---> ', req.body);
+
   const username = req.body.username;
   const password = req.body.password;
 
@@ -21,7 +23,7 @@ async function loginHandler(req, res) {
   console.log('aksljdflkasjdf ', loginData);
   loginData[0].token = token;
 
-  res.send({ loginData });
+  res.json(loginData);
 }
 
 function getTokenHandler(req, res) {
