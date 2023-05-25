@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { LoginData } from '../models/model.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth-login-angular-jasmine-karma-login',
@@ -26,13 +27,14 @@ export class LoginComponent {
   });
   isError = false;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   login() {
     this.loginFormData = this.loginForm.value;
     this.apiService.login(this.loginFormData).subscribe({
       next: (data: LoginData) => {
         console.log('data: ', data);
+        this.router.navigateByUrl('/dashboard', { state: { data: data } });
       },
       error: (err) => {
         console.log(err);

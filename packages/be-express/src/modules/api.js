@@ -23,7 +23,6 @@ async function loginHandler(req, res) {
   if (Array.isArray(loginData) && loginData.length === 0) {
     res.status(500).json({ error: 'Something went wrong' });
   } else {
-    console.log('loginData ', loginData, ' &&& token ', token);
     loginData[0].token = token;
     res.status(200).json(loginData);
   }
