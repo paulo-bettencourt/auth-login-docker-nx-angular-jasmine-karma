@@ -35,7 +35,7 @@ Feel free to explore and contribute to this repository for future enhancements a
 
 ## Understand this workspace
 
-1. Build the app by executing the command `docker build -t auth-app` .. This command will create a Docker image for the Authentication App.
+1. Build the app by executing the command `docker build -t auth-app`. This command will create a Docker image for the Authentication App.
 
 2. Once the image is built, run the app using `docker-compose up`. This command will start the Nx workspace, allowing the Frontend and Backend apps to run seamlessly. Additionally, the Docker container will establish the necessary connections with the Database, ensuring smooth interaction between the components of the app.
 
