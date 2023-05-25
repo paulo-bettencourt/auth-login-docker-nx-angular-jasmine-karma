@@ -31,19 +31,13 @@ main()
 
 // APIS AND MICROSERVICES
 app.use(cors());
-
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
-app.get('/api/register-login', api.registerLoginHandler);
-app.get('/api/get-login/:id', api.getLoginHandler);
-
+app.post('/api/register-login', jsonParser, api.registerLoginHandler);
 app.post('/api/login/', jsonParser, api.loginHandler);
 
+app.get('/api/get-login/:id', api.getLoginHandler);
 app.get('/api/token', api.getTokenHandler);
-
-app.get('/api/', (req, res) => {
-  res.send({ message: 'Welcome to be-express!' });
-});
 
 const server = app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}/api`);

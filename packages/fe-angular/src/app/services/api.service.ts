@@ -14,4 +14,10 @@ export class ApiService {
     return this.http.post<LoginData>(this.apiUrl, login);
     //  return this.http.get('http://localhost:3333/api');
   }
+
+  registerUser(
+    userData: Partial<{ username: string | null; password: string | null }>
+  ) {
+    return this.http.post<LoginData>(this.apiUrl, userData);
+  }
 }

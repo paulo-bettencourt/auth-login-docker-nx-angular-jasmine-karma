@@ -20,12 +20,31 @@ export class LoginComponent {
     password: new FormControl(''),
   });
   loginFormData!: Partial<{ username: string | null; password: string | null }>;
+  registerForm = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
+  });
+  registerFormData!: Partial<{
+    username: string | null;
+    password: string | null;
+  }>;
 
   constructor(private apiService: ApiService) {}
 
   login() {
     this.loginFormData = this.loginForm.value;
     this.apiService.login(this.loginFormData).subscribe({
+      next: (data: LoginData) => {
+        console.log('data: ', data);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  registerUser() {
+    this.apiService.login(this.registerFormData).subscribe({
       next: (data: LoginData) => {
         console.log('data: ', data);
       },
