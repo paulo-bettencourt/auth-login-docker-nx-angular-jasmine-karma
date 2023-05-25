@@ -1,32 +1,42 @@
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from './api.service';
-import createSpyObj = jasmine.createSpyObj;
+import { of } from 'rxjs';
 
-// Straight Jasmine testing without Angular's testing support
 describe('ValueService', () => {
   let apiService: ApiService;
   let httpClientSpy: jasmine.SpyObj<HttpClient>;
 
   beforeEach(() => {
-    httpClientSpy = jasmine.Spy('HttpClient', ['post']);
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['post']);
     apiService = new ApiService(httpClientSpy);
   });
 
-  it('#getValue should return real value', () => {
-    expect(service.getValue()).toBe('real value');
+  it('should build the service', () => {
+    expect(apiService).toBeTruthy();
   });
 
-  it('#getObservableValue should return value from observable', (done: DoneFn) => {
-    service.getObservableValue().subscribe((value) => {
-      expect(value).toBe('observable value');
-      done();
-    });
-  });
+  it('should login and return a json object', (done: DoneFn) => {
+    const mockLogin = {
+      username: 'kminchelle',
+      password: '1111',
+    };
+    const mockData = {
+      _id: '646dec96b7783f5e7c726abb',
+      username: 'kminchelle',
+      password: '1111',
+      __v: 0,
+      token:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJpYXQiOjE2ODQ5NDI3MTd9.9PBcOsHbj3JiMKtcvpHJMTzy43shyZU4cNTaVLhEHBU',
+    };
 
-  it('#getPromiseValue should return value from a promise', (done: DoneFn) => {
-    service.getPromiseValue().then((value) => {
-      expect(value).toBe('promise value');
-      done();
+    httpClientSpy.post.and.returnValue(of(mockData)); // Set up the mock response
+
+    apiService.login(mockLogin).subscribe({
+      next: (data) => {
+        expect(data).toEqual(mockData);
+        done();
+      },
+      error: done.fail,
     });
   });
 });
