@@ -24,10 +24,7 @@ export class LoginComponent {
     username: new FormControl(''),
     password: new FormControl(''),
   });
-  registerFormData!: Partial<{
-    username: string | null;
-    password: string | null;
-  }>;
+  isError = false;
 
   constructor(private apiService: ApiService) {}
 
@@ -39,17 +36,7 @@ export class LoginComponent {
       },
       error: (err) => {
         console.log(err);
-      },
-    });
-  }
-
-  registerUser() {
-    this.apiService.login(this.registerFormData).subscribe({
-      next: (data: LoginData) => {
-        console.log('data: ', data);
-      },
-      error: (err) => {
-        console.log(err);
+        this.isError = true;
       },
     });
   }

@@ -50,4 +50,10 @@
       (click)="login()"
     >Submit</a>
   </form>
+  <ng-container *ngIf="isError">
+    <div
+      id="emailHelp"
+      class="form-text"
+    >The provided data is incorrect. Please check your credentials.</div>
+  </ng-container>
 </div>

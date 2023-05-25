@@ -11,8 +11,6 @@ const loginSchema = new mongoose.Schema({
 const LoginModel = mongoose.model('login-collection', loginSchema);
 
 async function loginHandler(req, res) {
-  console.log('---> ', req.body);
-
   const username = req.body.username;
   const password = req.body.password;
 
@@ -21,37 +19,14 @@ async function loginHandler(req, res) {
     password: password,
   });
   console.log('aksljdflkasjdf ', loginData);
-  loginData[0].token = token;
 
-  res.json(loginData);
+  if (Array.isArray(loginData) && loginData.length === 0) {
+    res.status(500).json({ error: 'Something went wrong' });
+  } else {
+    console.log('loginData ', loginData, ' &&& token ', token);
+    loginData[0].token = token;
+    res.status(200).json(loginData);
+  }
 }
 
-function getTokenHandler(req, res) {
-  res.send({ token: token });
-}
-
-function registerLoginHandler(req, res) {
-  const instanceLogin = new LoginModel({
-    username: 'kminchelle',
-    password: '1111',
-  });
-
-  instanceLogin
-    .save()
-    .then(res.send({ message: 'user has been added' }))
-    .catch(console.log('Error'));
-}
-
-async function getLoginHandler(req, res) {
-  const id = req.params.id;
-  const loginModelQueryResponse = await LoginModel.findById(id);
-
-  res.send(loginModelQueryResponse);
-}
-
-module.exports = {
-  loginHandler,
-  registerLoginHandler,
-  getLoginHandler,
-  getTokenHandler,
-};
+module.exports = { loginHandler };
