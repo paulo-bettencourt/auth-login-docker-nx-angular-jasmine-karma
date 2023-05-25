@@ -18,7 +18,6 @@ async function loginHandler(req, res) {
     username: username,
     password: password,
   });
-  console.log('aksljdflkasjdf ', loginData);
 
   if (Array.isArray(loginData) && loginData.length === 0) {
     res.status(500).json({ error: 'Something went wrong' });
