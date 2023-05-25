@@ -25,11 +25,11 @@ Feel free to explore and contribute to this repository for future enhancements a
 
 ![Screenshot 2023-05-25 at 19 34 58](https://github.com/paulo-bettencourt/auth-login-docker-nx-angular-jasmine-karma/assets/37920932/2d2bf3ae-152a-4f4d-b37d-1c6b97efb1df)
 
-`If the user tries to login with the wrong credentials, the app will return an error and won't allow the user to login`
+`When attempting to login with incorrect credentials, the app will respond with an error and prevent the user from logging in.`
 
 ![Screenshot 2023-05-25 at 19 35 20](https://github.com/paulo-bettencourt/auth-login-docker-nx-angular-jasmine-karma/assets/37920932/a9a39273-02ca-419f-9507-eb82e99b8db1)
 
-`After loggin in, the user will have access to his dashboard and a JWT Token is provided`
+`Upon successful login, the user gains access to their dashboard, accompanied by the provision of a JWT Token.`
 
 ![Screenshot 2023-05-25 at 19 35 33](https://github.com/paulo-bettencourt/auth-login-docker-nx-angular-jasmine-karma/assets/37920932/9ee5dbe8-5bca-4843-ab0e-4fa97e9b6459)
 
