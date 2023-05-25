@@ -17,7 +17,7 @@ This GitHub repository contains an Authentication App implemented using the foll
 - Styling: Ng Bootstrap
 - Security: JWT Token (Frontend) and environment files for production (Backend)
 
-To ensure security and authentication, the JWT Token is required in each API request if the user wants to POST any information. To access the MongoDB Atlas server, developers need to edit their own process.env file and insert the necessary credentials. This will enable them to connect to their Mongoose DB for development purposes.
+To ensure security and authentication, the JWT Token is required in each API request if the user wants to POST any information. To access the MongoDB Atlas server, developers need to edit their own process.env file and insert the necessary credentials. This will enable them to connect to their Mongoose DB for development purposes. In addition to that, the developer will need to create a collection called 'login-collection' in MongoDB. Within this collection, they must include the 'username' and 'password' objects. This will allow Express, along with Mongoose, to retrieve the authentication information.
 
 Feel free to explore and contribute to this repository for future enhancements and features.
 
