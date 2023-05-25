@@ -6,7 +6,7 @@
 
 ## Description and technologies used
 
-This is an Authentication App, coded with the following technologies:
+This GitHub repository contains an Authentication App implemented using the following technologies:
 
 - Container: Docker
 - Workspace: Nx
@@ -14,10 +14,12 @@ This is an Authentication App, coded with the following technologies:
 - Backend: Express
 - Database: Mongoose
 - Tests: Jasmine
-- Styling: Ng Boostrap
-- Security: JWT Token (FE) && environment files for production (BE)
+- Styling: Ng Bootstrap
+- Security: JWT Token (Frontend) and environment files for production (Backend)
 
-For future developments, in case the user wants to POST any information, the JWT Token will be required in each API request. In order for the dev to access his mongoose DB, it's required to edit his own process.env file and insert the needed credentials for the MongoDB atlas server.
+To ensure security and authentication, the JWT Token is required in each API request if the user wants to POST any information. To access the MongoDB Atlas server, developers need to edit their own process.env file and insert the necessary credentials. This will enable them to connect to their Mongoose DB for development purposes.
+
+Feel free to explore and contribute to this repository for future enhancements and features.
 
 ## Screenshots
 
@@ -33,9 +35,9 @@ For future developments, in case the user wants to POST any information, the JWT
 
 ## Understand this workspace
 
-In order to containerize the app with Docker, first build the app with the `docker build -t auth .` command.
+1. Build the app by executing the command docker build -t auth .. This command will create a Docker image for the Authentication App.
 
-After run the `docker-compose up` so Docker can run the Nx workspace and, therefore, start the Frontend and Backend apps (connected with the Database.)
+2. Once the image is built, run the app using docker-compose up. This command will start the Nx workspace, allowing the Frontend and Backend apps to run seamlessly. Additionally, the Docker container will establish the necessary connections with the Database, ensuring smooth interaction between the components of the app.
 
 ## Remote caching
 
